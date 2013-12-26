@@ -1,0 +1,121 @@
+\documentclass[10pt,oneside]{article}
+\input{style/coursHeadings}
+
+\usepackage{style/schemabloc}
+%Si le boolen xp est vrai : compilation pour xabi
+%Sinon compilation Damien
+\newboolean{xp}
+\setboolean{xp}{true}
+
+\newboolean{prof}
+\setboolean{prof}{true}
+
+\def\xxtitre{\ifthenelse{\boolean{xp}}{
+CI 2 -- SLCI : Étude du comportement des Systèmes Linéaires Continus Invariants}{
+}}
+
+\def\xxsoustitre{\ifthenelse{\boolean{xp}}{
+Chapitre 7 -- Tracer des réponses harmoniques -- Diagramme de Bode}{
+}}
+
+
+\def\xxauteur{\ifthenelse{\boolean{xp}}{
+\noindent 2013 -- 2014 \\
+Xavier \textsc{Pessoles}}{
+}}
+
+
+\def\xxpied{\ifthenelse{\boolean{xp}}{
+CI 2 : SLCI -- Cours \\
+Ch 7 : Réponses harmoniques -- \ifthenelse{\boolean{prof}}{P}{E}%
+}{
+}}
+
+\usepackage[%
+    pdftitle={SLCI - Réponses harmoniques},
+    pdfauthor={Xavier Pessoles},
+    colorlinks=true,
+    linkcolor=blue,
+    citecolor=magenta]{hyperref}
+
+
+
+\usepackage{pifont}
+\sloppy
+\hyphenpenalty 10000
+
+
+\begin{document}
+
+
+\input{style/entete1}
+
+\begin{center}
+ \huge\textsc{\xxtitre}
+\end{center}
+
+\begin{center}
+ \LARGE\textsc{\xxsoustitre}
+\end{center}
+
+\vspace{.5cm}
+
+\begin{savoir}
+\textbf{Savoirs :}
+\begin{itemize}
+\item Mod.
+\end{itemize}
+\end{savoir}
+
+
+
+
+\setlength{\parskip}{0ex plus 0.2ex minus 0ex}
+ \renewcommand{\contentsname}{}
+ \renewcommand{\baselinestretch}{1}
+
+\tableofcontents
+
+ \renewcommand{\baselinestretch}{1.2}
+\setlength{\parskip}{2ex plus 0.5ex minus 0.2ex}
+
+% \vspace{1cm}
+\textit{Ce document évolue. Merci de signaler toutes erreurs ou coquilles.}
+
+
+
+\section{Présentation}
+\subsection{Caractérisation d'un signal sinusoïdal}
+
+\subsection{Réponse temporelle à une entrée sinusoïdale}
+\section{Diagramme de Bode}
+
+\subsection{Définition}
+
+\subsection{Représentation graphique}
+
+\subsection{Représentation d'un système asservi}
+
+\section{Réponse harmonique d'un gain}
+
+\section{Réponse harmonique d'un intégrateur}
+
+\subsection{Réponse harmonique système proportionnel intégral}
+
+\section{Réponse harmonique d'un système du premier ordre}
+
+\section{Réponse harmonique d'un système du second ordre}
+
+\subsection{Cas où $\xi>1$}
+\subsection{Cas où $\xi=1$}
+\subsection{Cas où $\xi<1$}
+\section{Réponse harmonique d'un système asservi}
+
+\begin{thebibliography}{2}
+   %\bibitem[1]{cite1} DMU 60 eVo linear, \textit{DMG -- Deckel Maho -- Gildemeiseter}, \url{http://fr.dmg.com}.
+   %\bibitem[2]{cite2} Programmation des machines-outils à commande numérique (MOCN), \textit{Étienne Lefur et Christophe Sohier}, École Normale Supérieure de Cachan, \url{http://etienne.lefur.free.fr/}.
+   %\bibitem[3]{cite3} SLCI : Systèmes asservis en boucle fermée : stabilité et précision, \textit{Joël Boiron}, PTSI -- Lycée Gustave Eiffel de Bordeaux.
+
+\end{thebibliography}
+
+\end{document}
