@@ -15,7 +15,7 @@ CI 2 -- SLCI : Étude du comportement des Systèmes Linéaires Continus Invarian
 }}
 
 \def\xxsoustitre{\ifthenelse{\boolean{xp}}{
-Chapitre 7 -- Tracer des réponses harmoniques -- Diagramme de Bode}{
+Chapitre 7 -- Réponses harmoniques -- Diagrammes de Bode}{
 }}
 
 
@@ -87,14 +87,101 @@ Ch 7 : Réponses harmoniques -- \ifthenelse{\boolean{prof}}{P}{E}%
 \section{Présentation}
 \subsection{Caractérisation d'un signal sinusoïdal}
 
+On peut définir un signal sinusoïdal sous la forme suivante :
+$$
+f(t)=A \sin(\omega \cdot t + \varphi)
+$$
+et on note :
+\begin{itemize}
+\item $A$ : l'amplitude de la sinusoïde;
+\item $\omega$ : la pulsation en $rad/s$;
+\item $\varphi$ : la phase à l'origine en $rad$.
+\end{itemize}
+On a par ailleurs :
+\begin{itemize}
+\item $T=\dfrac{2\pi}{\omega}$ : la période de la sinusoïde en $s$;
+\item $f=\dfrac{1}{T}$ : fréquence de la sinusoïde en $Hz$.
+\end{itemize}
+
+
 \subsection{Réponse temporelle à une entrée sinusoïdale}
-\section{Diagramme de Bode}
+\begin{defi}
+\textbf{Réponse harmonique}
+
+On appelle réponse harmonique la sortie d'un système lorsqu'il est soumis à une entrée sinusoïdale. Elle permet de caractériser le comportement dynamique du système.
+\end{defi}
+
+\section{Diagrammes de Bode}
+
+\subsection{Calcul complexe}
+Lorsque le système est soumis à une entrée sinusoïdale, la variable de la Laplace $p$ est substituée par $j\omega$. $H(j\omega)$ est appelée réponse en fréquence ou réponse harmonique du système.
+
+\begin{resultat}
+On rappelle que si $H(j\omega) = \dfrac{x_1+jy_1}{x_2+jy_2}$, alors : 
+\begin{itemize}
+\item on appelle $A(\omega)=|H(j\omega)|$ le module de $H$ (ou le gain de $H$) et on a : 
+$$
+A(\omega)= \dfrac{\sqrt{x_1^2+y_1^2}}{\sqrt{x_2^2+y_2^2}}
+$$
+\item on appelle $\varphi(\omega)=Arg(H(j\omega))$ l'argument de $H$ (ou la phase de $H$) et on a : 
+$$
+\varphi(\omega)= \arctan \dfrac{y_1}{x_1}-\arctan \dfrac{y_2}{x_2}
+$$
+\end{itemize}
+\end{resultat}
+
+\begin{rem}
+On appelle $Adb$ le gain en décibel et on a :
+$$
+Adb(\omega)=20 \log A(\omega)
+$$
+\end{rem}
+
+\begin{exemple}
+Soit $H(p)$ une fonction de transfert d'ordre 1 :
+$$
+H(j\omega)= \dfrac{K}{1+\tau j\omega }
+$$
+
+On a alors : 
+$$
+Adb(\omega) = 20 \log \left(\dfrac{\sqrt{K^2}}{\sqrt{1^2+(\tau\omega)^2}}\right) = 20 \log K - 10 \log \left(1+\tau^2\omega^2 \right)
+$$
+$$
+\varphi(\omega)= \arctan \dfrac{0}{K}-\arctan \dfrac{\tau\omega}{1} = - \arctan \tau\omega
+$$
+
+\end{exemple}
 
 \subsection{Définition}
 
-\subsection{Représentation graphique}
+\begin{defi}
+\textbf{Diagrammes de Bode}
+
+Les diagrammes de Bode représentent deux courbes sur deux diagrammes distincts dans des repère semi logarithmiques :
+\begin{itemize}
+\item la courbe de gain en décibel en fonction de la pulsation $\omega$;
+\item la courbe de phase (en degrés ou radians) en fonction de la pulsation $\omega$.
+\end{itemize}
+
+\end{defi}
+
 
 \subsection{Représentation d'un système asservi}
+
+Généralement, une fonction de transfert s'écrit sous la forme d'un produit de fonction rationnelles. Ainsi, notons $H(j\omega)=F(j\omega) \cdot G(j\omega)$. 
+
+On montre que le gain décibel de $H$ est sous la forme :
+$$
+Adb(\omega) = 20 \log |F(j\omega) |+20 \log |G(j\omega) |
+$$
+
+et que la phase est sous la forme :
+$$
+Adb(\omega) = Arg \left(F(j\omega) \right)+Arg \left(G(j\omega) \right)
+$$
+
+Ainsi pour tracer le gain et la phase d'une fonction de transfert s'exprimant sous la forme de produit de fonctions de transfert élémentaire, il suffit de tracer les fonctions de transfert élémentaire dans les diagrammes de Bode puis de les sommer.
 
 \section{Réponse harmonique d'un gain}
 
