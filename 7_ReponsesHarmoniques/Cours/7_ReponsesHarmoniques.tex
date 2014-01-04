@@ -91,24 +91,65 @@ On peut définir un signal sinusoïdal sous la forme suivante :
 $$
 f(t)=A \sin(\omega \cdot t + \varphi)
 $$
+\begin{minipage}[c]{.45\linewidth}
 et on note :
 \begin{itemize}
 \item $A$ : l'amplitude de la sinusoïde;
 \item $\omega$ : la pulsation en $rad/s$;
 \item $\varphi$ : la phase à l'origine en $rad$.
 \end{itemize}
+\end{minipage}\hfill
+\begin{minipage}[c]{.45\linewidth}
 On a par ailleurs :
 \begin{itemize}
 \item $T=\dfrac{2\pi}{\omega}$ : la période de la sinusoïde en $s$;
 \item $f=\dfrac{1}{T}$ : fréquence de la sinusoïde en $Hz$.
 \end{itemize}
+\end{minipage}
+\vspace{.5cm}
+
+\begin{minipage}[c]{.3\linewidth}
+\begin{center}
+\includegraphics[width=.95\textwidth]{png/sinus_ampli}
+
+\textit{Sinus amplifié}
+\end{center}
+\end{minipage}\hfill
+\begin{minipage}[c]{.3\linewidth}
+\begin{center}
+\includegraphics[width=.95\textwidth]{png/sinus_dephase}
+
+\textit{Sinus déphasé}
+\end{center}
+\end{minipage}\hfill
+\begin{minipage}[c]{.3\linewidth}
+\begin{center}
+\includegraphics[width=.95\textwidth]{png/sinus_ampli_dephase}
+
+\textit{Sinus amplifié et déphasé}
+\end{center}
+\end{minipage}
 
 
 \subsection{Réponse temporelle à une entrée sinusoïdale}
 
 Soit un système du premier ordre de la forme $H(p)=\dfrac{1}{1+\tau p}$. Le gain de la fonction de transfert est donc de 1 et la constante de temps est de 1 seconde. 
 
-Calculons la réponse temporelle $s(t)$ d'un premier ordre à une entrée sinusoïdale $e(t)=E_0  \sin \left( \omega_0 t\right)$. Dans le domaine de Laplace, on a $E(p)=E_0\dfrac{\omega_0}{\omega_0^2+p^2}$.
+Calculons la réponse temporelle $s(t)$ d'un premier ordre à une entrée sinusoïdale $e(t)=E_0  \sin \left( \omega_0 t\right)$. Dans le domaine de Laplace, on a $E(p)=E_0\dfrac{\omega_0}{\omega_0^2+p^2}$. $S(p)$ s'exprime donc sous la forme suivante :
+$$
+S(p)=E(p)\cdot H(p) = E_0\dfrac{\omega_0}{\omega_0^2+p^2} \cdot \dfrac{K}{1+\tau p }
+= KE_0\omega_0 \left( \dfrac{1}{\omega_0^2+p^2} \cdot \dfrac{1}{1+\tau p }\right)
+$$
+
+En réalisant la transformée de Laplace inverse, on obtient : 
+$$
+s(t)=\dfrac{KE_0}{1+\tau^2\omega_0^2} 
+\left( 
+\tau \omega_0  e^{-\dfrac{t}{\tau}} 
+-\tau \omega_0  \cos \left( \omega_0 t \right)
++\sin \left( \omega_0 t\right)
+\right)
+$$
 
 
 
@@ -117,6 +158,38 @@ Calculons la réponse temporelle $s(t)$ d'un premier ordre à une entrée sinuso
 
 On appelle réponse harmonique la sortie d'un système lorsqu'il est soumis à une entrée sinusoïdale. Elle permet de caractériser le comportement dynamique du système.
 \end{defi}
+
+
+
+\begin{minipage}[c]{.24\linewidth}
+\begin{center}
+\includegraphics[width=\textwidth]{png/sinus_om001.png}
+
+\textit{$\omega_0 =  0,01\; rad/s $ -- $T = 200 \pi \; s$}
+\end{center}
+\end{minipage}\hfill
+\begin{minipage}[c]{.24\linewidth}
+\begin{center}
+\includegraphics[width=\textwidth]{png/sinus_om01}
+\textit{$\omega_0 =  0,1\; rad/s $ -- $ T = 20 \pi \; s$}
+\end{center}
+\end{minipage}\hfill
+\begin{minipage}[c]{.24\linewidth}
+\begin{center}
+\includegraphics[width=\textwidth]{png/sinus_om1}
+
+\textit{$\omega_0 =  1\; rad/s $ -- $ T = 2 \pi \; s$}
+\end{center}
+\end{minipage}\hfill
+\begin{minipage}[c]{.24\linewidth}
+\begin{center}
+\includegraphics[width=\textwidth]{png/sinus_om10}
+
+\textit{$\omega_0 =  10\; rad/s $ -- $ T = 0,2 \pi \; s$}
+\end{center}
+\end{minipage}
+
+
 
 \section{Diagrammes de Bode}
 
