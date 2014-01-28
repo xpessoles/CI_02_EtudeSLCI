@@ -112,26 +112,26 @@ On a par ailleurs :
 \begin{center}
 \includegraphics[width=.95\textwidth]{png/sinus_ampli}
 
-\textit{Sinus amplifié}
+\textit{Sinus amplifiés}
 \end{center}
 \end{minipage}\hfill
 \begin{minipage}[c]{.3\linewidth}
 \begin{center}
 \includegraphics[width=.95\textwidth]{png/sinus_dephase}
 
-\textit{Sinus déphasé}
+\textit{Sinus déphasés}
 \end{center}
 \end{minipage}\hfill
 \begin{minipage}[c]{.3\linewidth}
 \begin{center}
 \includegraphics[width=.95\textwidth]{png/sinus_ampli_dephase}
 
-\textit{Sinus amplifié et déphasé}
+\textit{Sinus amplifiés et déphasés}
 \end{center}
 \end{minipage}
 
 
-\subsection{Réponse temporelle à une entrée sinusoïdale}
+\subsection{Réponse temporelle d'un système d'ordre 1 à une entrée sinusoïdale}
 
 Soit un système du premier ordre de la forme $H(p)=\dfrac{1}{1+\tau p}$. Le gain de la fonction de transfert est donc de 1 et la constante de temps est de 1 seconde. 
 
@@ -161,6 +161,8 @@ On appelle réponse harmonique la sortie d'un système lorsqu'il est soumis à u
 
 
 
+On donne les réponses temporelles pour plusieurs valeurs de la pulsation du signal d'entrée (\textbf{attention : les échelles des abscisses ne sont pas les mêmes sur chacune des figures}).
+
 \begin{minipage}[c]{.24\linewidth}
 \begin{center}
 \includegraphics[width=\textwidth]{png/sinus_om001.png}
@@ -189,7 +191,7 @@ On appelle réponse harmonique la sortie d'un système lorsqu'il est soumis à u
 \end{center}
 \end{minipage}
 
-
+On constate que quand la pulsation du signal augmente, on observe un déphasage entre le signal d'entrée et le signal de sortie ainsi qu'une atténuation du signal de sortie. 
 
 \section{Diagrammes de Bode}
 
@@ -246,7 +248,13 @@ Les diagrammes de Bode représentent deux courbes sur deux diagrammes distincts 
 
 \end{defi}
 
+\subsubsection{Tracé des diagrammes de Bode}
+Le tracé de Bode comprend toujours le diagramme de gain superposé avec le diagramme de phase. Dans le cas du premier ordre, la représentation directe du diagramme de Bode serait la suivante : 
+\begin{center}
+\includegraphics[width=.65\textwidth]{png/bode_orth}
+\end{center}
 
+On remarque de fortes variations de la courbe lorsque $\omega$ est petit. En conséquences, on choisit usuellement de représenter les diagrammes de Bode dans un repère semi logarithmique. 
 \subsection{Représentation d'un système asservi}
 
 Généralement, une fonction de transfert s'écrit sous la forme d'un produit de fonction rationnelles. Ainsi, notons $H(j\omega)=F(j\omega) \cdot G(j\omega)$. 
@@ -286,3 +294,4 @@ Ainsi pour tracer le gain et la phase d'une fonction de transfert s'exprimant so
 \end{thebibliography}
 
 \end{document}
+ 
