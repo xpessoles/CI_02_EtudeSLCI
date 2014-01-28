@@ -88,17 +88,17 @@ Ch 6 : Performance des systèmes -- \ifthenelse{\boolean{prof}}{P}{E}%
 \end{itemize}
 \end{obj}
 
-\begin{savoir}
-\textbf{Savoirs :}
-\begin{itemize}
-\item Mod%-C2.3 : Modèles canoniques du second ordre
-\begin{itemize}
-\item Mod%-C2-S1 : Identifier le comportement d’un système pour l’assimiler à un modèle canonique, à partir d’une réponse temporelle 
-\item Mod%-C2-S2 : Établir un modèle de comportement à partir de relevés expérimentaux
+%\begin{savoir}
+%\textbf{Savoirs :}
+%\begin{itemize}
+%\item Mod%-C2.3 : Modèles canoniques du second ordre
+%\begin{itemize}
+%\item Mod%-C2-S1 : Identifier le comportement d’un système pour l’assimiler à un modèle canonique, à partir d’une réponse temporelle 
+%\item Mod%-C2-S2 : Établir un modèle de comportement à partir de relevés expérimentaux
 %\item Mod-C2-S3 : On pourra étudier les systèmes du premier ordre présentant un retard pur
-\end{itemize}
-\end{itemize}
-\end{savoir}
+%\end{itemize}
+%\end{itemize}
+%\end{savoir}
 
 \setlength{\parskip}{0ex plus 0.2ex minus 0ex}
  \renewcommand{\contentsname}{}
@@ -118,16 +118,9 @@ erreurs ou coquilles.}
 
 On s'intéresse à un système asservi classique. Les contraintes à respecter vis-à vis du cahier des charges sont des contraintes de stabilité, rapidité et de précision.
 
-\begin{minipage}[c]{.48\linewidth}
 \begin{center}
-\includegraphics[width=.95\textwidth]{png/bloc1}
+\includegraphics[width=.55\textwidth]{png/bloc1}
 \end{center}
-\end{minipage}\hfill
-\begin{minipage}[c]{.48\linewidth}
-\begin{center}
-\includegraphics[width=.95\textwidth]{png/cdc}
-\end{center}
-\end{minipage}
 
 \begin{exemple}
 Pour modéliser l'axe asservi d'une machine outil la modélisation suivante :
@@ -285,7 +278,7 @@ $$
 =\lim\limits_{t\to \infty} \varepsilon(t) 
 = \lim\limits_{p\to 0} p \varepsilon(p)
 = \lim\limits_{p\to 0} p \dfrac{\dfrac{1}{1+K_CK_MK_T}\left( 1+\tau p\right)}{1+\dfrac{\tau}{1+K_CK_MK_T} p}\cdot \dfrac{1}{p^2}
-=\dfrac{1}{1+K_CK_MK_T}
+=+\infty
 $$
 
 Le système est donc instable lorsqu'il est soumis à une rampe. Utiliser un correcteur intégral de la forme $C(p)=\dfrac{K_C}{p}$ permettrait de stabiliser le système. En augmentant alors $K_C$, on réduirait l'erreur de traînage.
@@ -318,6 +311,7 @@ Ainsi :
 \item si $\alpha=2$ : $\varepsilon_A = \dfrac{E_0}{K}$. L'écart diminue lorsque $K$ augmente.
 \end{itemize}
 
+\newpage 
 
 \subsection{Bilan}
 
@@ -421,7 +415,93 @@ Cas 2 : $C(p)=\dfrac{K_C}{p}$
 }
 \end{exemple}
 
+\section{Étude de la stabilité des systèmes}
+Il ne s'agit pas ici de faire une étude exhaustive de la stabilité des systèmes asservis, mais d'avoir une idée sur un des critères de stabilité
+\subsection{Système d'ordre 1}
+Soit un système du premier ordre sous sa forme canonique :
+$$
+H(p)=\dfrac{K}{1+\tau p}
+$$
 
+Sa réponse temporelle à une entrée échelon d'amplitude $E_0$ est donnée par :
+$$
+s(t) = E_0 K \left(1-e^{-\dfrac{t}{\tau}}\right)
+$$
+
+Le système est instable si $\tau$ est négatif.
+
+\subsection{Système d'ordre 2}
+Soit un système du second ordre :
+$$
+H(p)
+=\dfrac{K}{1+\dfrac{2\xi}{\omega_0} p+\dfrac{1}{\omega_0^2} p^2}
+=\dfrac{K\omega_0^2}{\omega_0^2+2\xi\omega_0 p+\omega_0^2 p^2}
+$$
+
+
+On le sollicite par un échelon d'amplitude $E_0$. En conséquence, $E(p)=\dfrac{E_0}{p}$ et on a :
+$$
+S(p)=\dfrac{E_0}{p} \cdot \dfrac{K\omega_0^2}{\omega_0^2+2\xi\omega_0 p+\omega_0^2 p^2}
+$$
+
+\subsubsection{Cas où $\xi>1$}
+Dans ce cas, $\omega_0^2+2\xi\omega_0 p+\omega_0^2 p^2$ peut se factoriser sous la forme $\left(p-p_1\right)\cdot\left(p-p_2\right)$ avec $p_1 = -\xi\omega_0 + \omega_0 \sqrt{\xi^2-1}$ et $p_2 = -\xi\omega_0 - \omega_0 \sqrt{\xi^2-1}$.
+
+On montre donc que :
+$$
+S(p)= \dfrac{KE_0}{p} + \dfrac{KE_0 p_2}{p_1-p_2}\cdot \dfrac{1}{p-p_1}
++ \dfrac{KE_0 p_1}{p_2-p_1}\cdot \dfrac{1}{p-p_2}
+$$
+
+Et alors, 
+$$
+s(t) = KE_0\left(1+ \dfrac{ p_2}{p_1-p_2} e^{p_1 \cdot t} + \dfrac{p_1}{p_2-p_1}\cdot e^{p_2 t} \right) \cdot u(t)
+$$
+
+
+Dans ce cas, 
+
+\begin{center}
+ \includegraphics[width=.8\textwidth]{png/poles_1}
+\end{center}
+
+\subsubsection{Cas où $\xi=1$}
+Dans ce cas, $\omega_0^2+2\xi\omega_0 p+\omega_0^2 p^2$ se met sous la forme $\left( p-p_1^2\right) $ avec $p_1 = -\omega_0$.
+
+On montre donc que :
+$$
+S(p)= \dfrac{KE_0}{p} - \dfrac{KE_0}{p-p_1} - \dfrac{KE_0 \omega_0}{\left(p-p_1\right)^2}
+$$
+
+Et alors, 
+$$
+s(t) = KE_0\left(1- e^{-\omega_0 \cdot t} -\omega_0 t  e^{-\omega_0t} \right) \cdot u(t)
+$$
+
+\subsubsection{Cas où $\xi<1$}
+Dans ce cas, $\omega_0^2+2\xi\omega_0 p+\omega_0^2 p^2$ peut se factoriser sous la forme $\left(p-p_1\right)\cdot\left(p-p_2\right)$ avec $p_1 = -\xi\omega_0 + j \omega_0 \sqrt{1-\xi^2}$ et $p_2 = -\xi\omega_0 - j \omega_0 \sqrt{1-\xi^2}$.
+
+On montre donc que :
+$$
+S(p)= KE_0\left( 
+\dfrac{1}{p}
+-\dfrac{p+\xi\omega_0}{\left( p+\xi\omega_0\right)^2+\omega_0^2\left(1-\xi^2\right)}
+-\dfrac{\xi\omega_0}{\left( p+\xi\omega_0\right)^2+\omega_0^2\left(1-\xi^2\right)}
+\right)
+$$
+
+Et alors, 
+$$
+s(t) = KE_0\left(1
+- e^{-\xi\omega_0 t}\cdot\cos \left(t\omega_0 \sqrt{1-\xi^2} \right)
+- \dfrac{\xi}{\sqrt{1-\xi^2}} e^{-\xi\omega_0 t}\cdot\sin \left(t\omega_0 \sqrt{1-\xi^2} \right)
+\right) \cdot u(t)
+$$
+
+
+\begin{center}
+ \includegraphics[width=.8\textwidth]{png/poles_3}
+\end{center}
 
 %\begin{exemple}
 %Cas 3 : $C(p)=K_C$, $C(p)=\dfrac{K_T}{p}$
@@ -434,6 +514,9 @@ Cas 2 : $C(p)=\dfrac{K_C}{p}$
 %}
 %\end{exemple}
 
+\begin{resultat}
+On montre qu'un système est stable si les pôles de la \textbf{FTBF} sont à partie réelle \textbf{strictement négative}.
+\end{resultat}
 
 \begin{thebibliography}{2}
    \bibitem[1]{cite1} DMU 60 eVo linear, \textit{DMG -- Deckel Maho -- Gildemeiseter}, \url{http://fr.dmg.com}.
