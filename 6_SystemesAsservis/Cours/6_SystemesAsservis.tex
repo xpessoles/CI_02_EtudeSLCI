@@ -127,7 +127,7 @@ Pour modéliser l'axe asservi d'une machine outil la modélisation suivante :
 \begin{center}
 \includegraphics[width=.6\textwidth]{png/bloc2}
 \end{center}
-On prendra $K(p)=1$, $H(p)$ une fonction de transfert du premier ordre de gain $K_M$ et de constante de temps $\tau$, $G(p)=\dfrac{K_T}{p}$ combine à la fois la transformation d'une vitesse de rotation en une vitesse de translation puis une position en translation. $C(p)$ est un correcteur de la forme $C(p)=K_C$.
+On prendra $K(p)=1$, $H(p)$ une fonction de transfert du premier ordre de gain $K_M$ et de constante de temps $\tau$, $G(p)=K_T$ permet de transformer la vitesse de rotation en une vitesse de translation. $C(p)$ est un correcteur de la forme $C(p)=K_C$.
 \end{exemple}
 
 
@@ -435,17 +435,17 @@ Soit un système du second ordre :
 $$
 H(p)
 =\dfrac{K}{1+\dfrac{2\xi}{\omega_0} p+\dfrac{1}{\omega_0^2} p^2}
-=\dfrac{K\omega_0^2}{\omega_0^2+2\xi\omega_0 p+\omega_0^2 p^2}
+=\dfrac{K\omega_0^2}{\omega_0^2+2\xi\omega_0 p+ p^2}
 $$
 
 
 On le sollicite par un échelon d'amplitude $E_0$. En conséquence, $E(p)=\dfrac{E_0}{p}$ et on a :
 $$
-S(p)=\dfrac{E_0}{p} \cdot \dfrac{K\omega_0^2}{\omega_0^2+2\xi\omega_0 p+\omega_0^2 p^2}
+S(p)=\dfrac{E_0}{p} \cdot \dfrac{K\omega_0^2}{\omega_0^2+2\xi\omega_0 p+ p^2}
 $$
 
 \subsubsection{Cas où $\xi>1$}
-Dans ce cas, $\omega_0^2+2\xi\omega_0 p+\omega_0^2 p^2$ peut se factoriser sous la forme $\left(p-p_1\right)\cdot\left(p-p_2\right)$ avec $p_1 = -\xi\omega_0 + \omega_0 \sqrt{\xi^2-1}$ et $p_2 = -\xi\omega_0 - \omega_0 \sqrt{\xi^2-1}$.
+Dans ce cas, $\omega_0^2+2\xi\omega_0 p+ p^2$ peut se factoriser sous la forme $\left(p-p_1\right)\cdot\left(p-p_2\right)$ avec $p_1 = -\xi\omega_0 + \omega_0 \sqrt{\xi^2-1}$ et $p_2 = -\xi\omega_0 - \omega_0 \sqrt{\xi^2-1}$.
 
 On montre donc que :
 $$
@@ -466,7 +466,7 @@ Dans ce cas,
 \end{center}
 
 \subsubsection{Cas où $\xi=1$}
-Dans ce cas, $\omega_0^2+2\xi\omega_0 p+\omega_0^2 p^2$ se met sous la forme $\left( p-p_1^2\right) $ avec $p_1 = -\omega_0$.
+Dans ce cas, $\omega_0^2+2\xi\omega_0 p+ p^2$ se met sous la forme $\left( p-p_1^2\right) $ avec $p_1 = -\omega_0$.
 
 On montre donc que :
 $$
@@ -479,7 +479,7 @@ s(t) = KE_0\left(1- e^{-\omega_0 \cdot t} -\omega_0 t  e^{-\omega_0t} \right) \c
 $$
 
 \subsubsection{Cas où $\xi<1$}
-Dans ce cas, $\omega_0^2+2\xi\omega_0 p+\omega_0^2 p^2$ peut se factoriser sous la forme $\left(p-p_1\right)\cdot\left(p-p_2\right)$ avec $p_1 = -\xi\omega_0 + j \omega_0 \sqrt{1-\xi^2}$ et $p_2 = -\xi\omega_0 - j \omega_0 \sqrt{1-\xi^2}$.
+Dans ce cas, $\omega_0^2+2\xi\omega_0 p+p^2$ peut se factoriser sous la forme $\left(p-p_1\right)\cdot\left(p-p_2\right)$ avec $p_1 = -\xi\omega_0 + j \omega_0 \sqrt{1-\xi^2}$ et $p_2 = -\xi\omega_0 - j \omega_0 \sqrt{1-\xi^2}$.
 
 On montre donc que :
 $$
