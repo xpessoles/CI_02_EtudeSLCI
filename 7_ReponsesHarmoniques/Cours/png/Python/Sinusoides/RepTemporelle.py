@@ -3,13 +3,13 @@ import numpy as np
 from math import sqrt
 
 
-xf=1000
+xf=1
 x=np.linspace(0,xf,500)
 
-K,E0,tau,om0 = 1,1,1,0.01
+K,E0,tau,om0 = 1,1,1,10
 
 p1=plt.plot(x,(E0*np.sin(om0*x)),
-            label="e(t) - $\omega_0$=0,01 rad/s ",linewidth=3)
+            label="e(t) - $\omega_0$=1 rad/s ",linewidth=3)
 
 p2=plt.plot(x,
             ((K*E0)/(1+tau*tau*om0*om0))*(

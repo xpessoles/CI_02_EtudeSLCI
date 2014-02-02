@@ -249,12 +249,44 @@ Les diagrammes de Bode représentent deux courbes sur deux diagrammes distincts 
 \end{defi}
 
 \subsubsection{Tracé des diagrammes de Bode}
-Le tracé de Bode comprend toujours le diagramme de gain superposé avec le diagramme de phase. Dans le cas du premier ordre, la représentation directe du diagramme de Bode serait la suivante : 
-\begin{center}
-\includegraphics[width=.65\textwidth]{png/bode_orth}
-\end{center}
+Le tracé de Bode comprend toujours le diagramme de gain superposé avec le diagramme de phase. Dans le cas d'un système du premier ordre, la représentation directe du diagramme de Bode serait la suivante.
+
 
 On remarque de fortes variations de la courbe lorsque $\omega$ est petit. En conséquences, on choisit usuellement de représenter les diagrammes de Bode dans un repère semi logarithmique. 
+
+\begin{minipage}[c]{.48\linewidth}
+\begin{center}
+\includegraphics[width=\textwidth]{png/bode_orth}
+\end{center} 
+\end{minipage}\hfill
+\begin{minipage}[c]{.48\linewidth}
+\begin{center}
+\includegraphics[width=\textwidth]{png/bode_semilog}
+\end{center}
+\end{minipage} 
+ 
+\subsubsection{Lien entre la réponse temporelle et le diagramme de Bode}
+Une réponse temporelle pour une pulsation donnée permet de tracer un point dans la courbe de gain et un point dans la courbe de phase.
+\begin{center}
+\includegraphics[width=\textwidth]{png/temp_bode}
+\end{center}
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+Pulsation ($rad/s$) & 0,01 & 0,1 & 1 & 10\\
+\hline
+Rapport des amplitudes & 1 & 1 & 0,756 & 0,17 \\
+\hline
+Décalage temporel & 0 & 0 &0,721 s. &0,14 s. \\
+\hline
+Gain ($db$) & 0 & 0 & & \\
+\hline
+Déphasage ($rad$) & & & & \\
+\hline
+\end{tabular}
+\end{center}
+
 \subsection{Représentation d'un système asservi}
 
 Généralement, une fonction de transfert s'écrit sous la forme d'un produit de fonction rationnelles. Ainsi, notons $H(j\omega)=F(j\omega) \cdot G(j\omega)$. 
@@ -273,9 +305,12 @@ Ainsi pour tracer le gain et la phase d'une fonction de transfert s'exprimant so
 
 \section{Réponse harmonique d'un gain}
 
-\section{Réponse harmonique d'un intégrateur}
 
+
+\section{Réponse harmonique d'un intégrateur}
 \subsection{Réponse harmonique système proportionnel intégral}
+
+\subsection{Réponse harmonique d'un dérivateur}
 
 \section{Réponse harmonique d'un système du premier ordre}
 
