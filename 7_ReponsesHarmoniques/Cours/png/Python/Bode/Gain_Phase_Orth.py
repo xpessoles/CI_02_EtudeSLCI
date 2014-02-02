@@ -10,7 +10,7 @@ K,E0,tau,om0 = 1,1,1,0.01
 
 
 plt.subplot(2,1,1)
-plt.plot(omega,20.*np.log(K)-10*np.log(1+tau*tau*omega*omega),
+plt.plot(omega,20.*np.log10(K)-10*np.log10(1+tau*tau*omega*omega),
             label="$Adb(\\omega)$",linewidth=3)
 plt.ylabel("Gain $Gdb$")
 plt.xlabel("Pulsation $\\omega$")

@@ -278,15 +278,26 @@ Pulsation ($rad/s$) & 0,01 & 0,1 & 1 & 10\\
 \hline
 Rapport des amplitudes & 1 & 1 & 0,756 & 0,17 \\
 \hline
-Décalage temporel & 0 & 0 &0,721 s. &0,14 s. \\
+Décalage temporel ($s.$) & 0 & 0 &0,721  &0,14  \\
 \hline
-Gain ($db$) & 0 & 0 & & \\
+Gain ($db$) & 0 & 0 & -2,43 %-6,93
+& -15,39 % -46,15
+\\
 \hline
-Déphasage ($rad$) & & & & \\
+Déphasage ($rad$) & 0 & 0 & 0,72 & 1,4\\
 \hline
 \end{tabular}
 \end{center}
+% 1  rad/s >> T = 2pi      = 6,28    6,28 s <> 2pi rad => 0,721 <> 
+% 10 rad/s >> T = 2pi/10 = 0,628  0,628s <> 2pi      => 0,14 <> 1,4 rad
+% 
 
+
+\begin{resultat}
+La représentation de la \textbf{fonction de transfert} dans les diagrammes de Bode permet d'avoir des informations sur la comportement du système. 
+
+Attention, suivant les cas, il sera nécessaire de représenter la FTBO \textbf{ou} la FTBF.
+\end{resultat}
 \subsection{Représentation d'un système asservi}
 
 Généralement, une fonction de transfert s'écrit sous la forme d'un produit de fonction rationnelles. Ainsi, notons $H(j\omega)=F(j\omega) \cdot G(j\omega)$. 
@@ -298,35 +309,214 @@ $$
 
 et que la phase est sous la forme :
 $$
-Adb(\omega) = Arg \left(F(j\omega) \right)+Arg \left(G(j\omega) \right)
+Arg(\omega) = Arg \left(F(j\omega) \right)+Arg \left(G(j\omega) \right)
 $$
 
 Ainsi pour tracer le gain et la phase d'une fonction de transfert s'exprimant sous la forme de produit de fonctions de transfert élémentaire, il suffit de tracer les fonctions de transfert élémentaire dans les diagrammes de Bode puis de les sommer.
 
 \section{Réponse harmonique d'un gain}
 
+\begin{minipage}[c]{.48\linewidth}
+\begin{center}
+\includegraphics[width=.9\textwidth]{png/gain_bloc}
+\end{center}
+
+Ici $H(j\omega)=K$. On a :
+\begin{itemize}
+\item [$\bullet$] $Adb(\omega)=20 \log K$;
+\item [$\bullet$] $\varphi(\omega)= \arctan \dfrac{0}{K} = 0$.
+\end{itemize}
+\end{minipage}\hfill
+\begin{minipage}[c]{.48\linewidth}
+\begin{center}
+\includegraphics[width=.9\textwidth]{png/gain_bode}
+
+\textit{Diagramme de Bode -- $H(p)=20$}
+\end{center}
+\end{minipage}
 
 
 \section{Réponse harmonique d'un intégrateur}
+
+\subsection{Réponse harmonique d'un intégrateur}
+\begin{minipage}[c]{.48\linewidth}
+\begin{center}
+\includegraphics[width=.9\textwidth]{png/integrateur_bloc}
+\end{center}
+
+Ici $H(j\omega)=\dfrac{1}{j\omega}=-\dfrac{j}{\omega}$. On a :
+\begin{itemize}
+\item [$\bullet$] $Adb(\omega)=20 \log \dfrac{1}{\omega}=-20\log \omega$;
+\item [$\bullet$] $\varphi(\omega)= \arctan \dfrac{\dfrac{-1}{\omega}}{0}$ tend vers $-\dfrac{\pi}{2}$.
+\end{itemize}
+
+\end{minipage}\hfill
+\begin{minipage}[c]{.48\linewidth}
+\begin{center}
+\includegraphics[width=.9\textwidth]{png/integrateur_bode}
+
+\textit{Diagramme de Bode -- $H(p)=\dfrac{1}{p}$}
+\end{center}
+\end{minipage}
+
 \subsection{Réponse harmonique système proportionnel intégral}
+\begin{minipage}[c]{.48\linewidth}
+\begin{center}
+\includegraphics[width=.9\textwidth]{png/proportionnel_integral_bloc}
+\end{center}
+Ici $H(j\omega)=\dfrac{K}{j\omega}=-\dfrac{j}{\omega}$. On a :
+\begin{itemize}
+\item [$\bullet$] $Adb(\omega)=20 \log \dfrac{K}{\omega}=20\log K -20\log \omega$;
+\item [$\bullet$] $\varphi(\omega)= \arctan \dfrac{\dfrac{-K}{\omega}}{0}$ tend vers $-\dfrac{\pi}{2}$.
+\end{itemize}
+\end{minipage}\hfill
+\begin{minipage}[c]{.48\linewidth}
+\begin{center}
+\includegraphics[width=.9\textwidth]{png/proportionnel_integral_bode}
+
+\textit{Diagramme de Bode -- $H(p)= \dfrac{20}{p}$}
+\end{center}
+\end{minipage}
 
 \subsection{Réponse harmonique d'un dérivateur}
+\begin{minipage}[c]{.48\linewidth}
+\begin{center}
+\includegraphics[width=.9\textwidth]{png/derivateur_bloc}
+\end{center}
+
+Ici $H(j\omega)= j\omega$. On a :
+\begin{itemize}
+\item [$\bullet$] $Adb(\omega)=20 \log {\omega}=20\log \omega$;
+\item [$\bullet$] $\varphi(\omega)= \arctan \dfrac{\dfrac{1}{\omega}}{0}$ tend vers $\dfrac{\pi}{2}$.
+\end{itemize}
+
+\end{minipage}\hfill
+\begin{minipage}[c]{.48\linewidth}
+\begin{center}
+\includegraphics[width=.9\textwidth]{png/derivateur_bode}
+
+\textit{Diagramme de Bode -- $H(p)=p$}
+\end{center}
+\end{minipage}
 
 \section{Réponse harmonique d'un système du premier ordre}
 
+\begin{minipage}[c]{.48\linewidth}
+\begin{center}
+\includegraphics[width=.9\textwidth]{png/ordre1_bloc}
+\end{center}
+
+On a $H(j\omega)=\dfrac{K}{1+j\omega p}$. Calculons le gain de la fonction de transfert :
+$$
+Adb(\omega) 
+= 20\log \left(\dfrac{ \sqrt{ K^2} }{\sqrt{1+\tau^2\omega^2}}\right)
+= 20\log K - 10 \log \left( 1+\tau^2\omega^2\right)
+$$
+
+$$
+\varphi(\omega) 
+= \arctan\left( \dfrac{0}{K}\right)-\arctan\left( \dfrac{\tau\omega}{1}\right)
+= -\arctan\tau\omega
+$$
+\end{minipage}\hfill
+\begin{minipage}[c]{.48\linewidth}
+\begin{center}
+\includegraphics[width=.9\textwidth]{png/ordre1_bode}
+
+\textit{Diagramme de Bode -- $H(p)=\dfrac{20}{1+p}$}
+\end{center}
+\end{minipage}
+
 \section{Réponse harmonique d'un système du second ordre}
 
-\subsection{Cas où $\xi>1$}
-\subsection{Cas où $\xi=1$}
-\subsection{Cas où $\xi<1$}
-\section{Réponse harmonique d'un système asservi}
+\begin{minipage}[c]{.48\linewidth}
+\begin{center}
+\includegraphics[width=.9\textwidth]{png/ordre2_bloc}
+\end{center}
+\end{minipage}\hfill
+\begin{minipage}[c]{.48\linewidth}
+\begin{center}
+%\includegraphics[width=.9\textwidth]{png/ordre2_bode}
 
-\begin{thebibliography}{2}
+%\textit{Diagramme de Bode -- $H(p)=$}
+\end{center}
+\end{minipage}
+
+\subsection{Cas où $\xi>1$}
+%\begin{minipage}[c]{.48\linewidth}
+Dans ce cas, le dénominateur de la fonction de transfert peut se factoriser sous la forme :
+$H(p)=\dfrac{K}{\left(1+\tau_1 p \right)\left(1+\tau_2 p \right)}$.
+
+Tracer le diagramme de Bode asymptotique de la fonction de transfert 
+$H(p)=\dfrac{20}{\left(1+ p \right)\left(1+10 p \right)}$.
+
+\begin{center}
+\includegraphics[width=.9\textwidth]{png/bode_vierge}
+
+\textit{Diagramme de Bode -- $H(p)=\dfrac{20}{\left(1+ p \right)\left(1+10 p \right)}$}
+\end{center}
+
+%\end{minipage}\hfill
+%\begin{minipage}[c]{.48\linewidth}
+%\begin{center}
+%\includegraphics[width=.9\textwidth]{png/ordre2_bode}
+
+%\textit{Diagramme de Bode -- $H(p)=$}
+%\end{center}
+%\end{minipage}
+
+
+\subsection{Cas où $\xi=1$}
+%\begin{minipage}[c]{.48\linewidth}
+Dans ce cas, le dénominateur de la fonction de transfert peut se factoriser sous la forme :
+$H(p)=\dfrac{K}{\left(1+\tau p \right)^2}$.
+
+Tracer le diagramme de Bode asymptotique de la fonction de transfert 
+$H(p)=\dfrac{20}{\left(1+ p \right)^2}$.
+
+\begin{center}
+\includegraphics[width=.9\textwidth]{png/bode_vierge}
+
+\textit{Diagramme de Bode -- $H(p)=\dfrac{20}{\left(1+ p \right)^2}$}
+\end{center}
+
+%\end{minipage}\hfill
+%\begin{minipage}[c]{.48\linewidth}
+%\begin{center}
+%\includegraphics[width=.9\textwidth]{png/ordre2_bode}
+
+%\textit{Diagramme de Bode -- $H(p)=$}
+%\end{center}
+%\end{minipage}
+
+\subsection{Cas où $\xi<1$}
+%\begin{minipage}[c]{.48\linewidth}
+
+
+\begin{center}
+\includegraphics[width=.9\textwidth]{png/bode_vierge}
+
+\textit{Diagramme de Bode -- $H(p)=$}
+\end{center}
+
+%\end{minipage}\hfill
+%\begin{minipage}[c]{.48\linewidth}
+%\begin{center}
+%\includegraphics[width=.9\textwidth]{png/ordre2_bode}
+
+%\textit{Diagramme de Bode -- $H(p)=$}
+%\end{center}
+%\end{minipage}
+
+
+%\section{Réponse harmonique d'un système asservi}
+
+%\begin{thebibliography}{2}
    %\bibitem[1]{cite1} DMU 60 eVo linear, \textit{DMG -- Deckel Maho -- Gildemeiseter}, \url{http://fr.dmg.com}.
    %\bibitem[2]{cite2} Programmation des machines-outils à commande numérique (MOCN), \textit{Étienne Lefur et Christophe Sohier}, École Normale Supérieure de Cachan, \url{http://etienne.lefur.free.fr/}.
    %\bibitem[3]{cite3} SLCI : Systèmes asservis en boucle fermée : stabilité et précision, \textit{Joël Boiron}, PTSI -- Lycée Gustave Eiffel de Bordeaux.
 
-\end{thebibliography}
+%\end{thebibliography}
 
 \end{document}
  
