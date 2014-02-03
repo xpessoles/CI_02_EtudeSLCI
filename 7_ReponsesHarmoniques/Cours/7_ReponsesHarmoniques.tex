@@ -213,9 +213,9 @@ $$
 \end{resultat}
 
 \begin{rem}
-On appelle $Adb$ le gain en décibel et on a :
+On appelle $AdB$ le gain en décibel et on a :
 $$
-Adb(\omega)=20 \log A(\omega)
+AdB(\omega)=20 \log A(\omega)
 $$
 \end{rem}
 
@@ -227,7 +227,7 @@ $$
 
 On a alors : 
 $$
-Adb(\omega) = 20 \log \left(\dfrac{\sqrt{K^2}}{\sqrt{1^2+(\tau\omega)^2}}\right) = 20 \log K - 10 \log \left(1+\tau^2\omega^2 \right)
+AdB(\omega) = 20 \log \left(\dfrac{\sqrt{K^2}}{\sqrt{1^2+(\tau\omega)^2}}\right) = 20 \log K - 10 \log \left(1+\tau^2\omega^2 \right)
 $$
 $$
 \varphi(\omega)= \arctan \dfrac{0}{K}-\arctan \dfrac{\tau\omega}{1} = - \arctan \tau\omega
@@ -280,7 +280,7 @@ Rapport des amplitudes & 1 & 1 & 0,756 & 0,17 \\
 \hline
 Décalage temporel ($s.$) & 0 & 0 &0,721  &0,14  \\
 \hline
-Gain ($db$) & 0 & 0 & -2,43 %-6,93
+Gain ($dB$) & 0 & 0 & -2,43 %-6,93
 & -15,39 % -46,15
 \\
 \hline
@@ -304,7 +304,7 @@ Généralement, une fonction de transfert s'écrit sous la forme d'un produit de
 
 On montre que le gain décibel de $H$ est sous la forme :
 $$
-Adb(\omega) = 20 \log |F(j\omega) |+20 \log |G(j\omega) |
+AdB(\omega) = 20 \log |F(j\omega) |+20 \log |G(j\omega) |
 $$
 
 et que la phase est sous la forme :
@@ -323,7 +323,7 @@ Ainsi pour tracer le gain et la phase d'une fonction de transfert s'exprimant so
 
 Ici $H(j\omega)=K$. On a :
 \begin{itemize}
-\item [$\bullet$] $Adb(\omega)=20 \log K$;
+\item [$\bullet$] $AdB(\omega)=20 \log K$;
 \item [$\bullet$] $\varphi(\omega)= \arctan \dfrac{0}{K} = 0$.
 \end{itemize}
 \end{minipage}\hfill
@@ -346,7 +346,7 @@ Ici $H(j\omega)=K$. On a :
 
 Ici $H(j\omega)=\dfrac{1}{j\omega}=-\dfrac{j}{\omega}$. On a :
 \begin{itemize}
-\item [$\bullet$] $Adb(\omega)=20 \log \dfrac{1}{\omega}=-20\log \omega$;
+\item [$\bullet$] $AdB(\omega)=20 \log \dfrac{1}{\omega}=-20\log \omega$;
 \item [$\bullet$] $\varphi(\omega)= \arctan \dfrac{\dfrac{-1}{\omega}}{0}$ tend vers $-\dfrac{\pi}{2}$.
 \end{itemize}
 
@@ -366,7 +366,7 @@ Ici $H(j\omega)=\dfrac{1}{j\omega}=-\dfrac{j}{\omega}$. On a :
 \end{center}
 Ici $H(j\omega)=\dfrac{K}{j\omega}=-\dfrac{j}{\omega}$. On a :
 \begin{itemize}
-\item [$\bullet$] $Adb(\omega)=20 \log \dfrac{K}{\omega}=20\log K -20\log \omega$;
+\item [$\bullet$] $AdB(\omega)=20 \log \dfrac{K}{\omega}=20\log K -20\log \omega$;
 \item [$\bullet$] $\varphi(\omega)= \arctan \dfrac{\dfrac{-K}{\omega}}{0}$ tend vers $-\dfrac{\pi}{2}$.
 \end{itemize}
 \end{minipage}\hfill
@@ -386,7 +386,7 @@ Ici $H(j\omega)=\dfrac{K}{j\omega}=-\dfrac{j}{\omega}$. On a :
 
 Ici $H(j\omega)= j\omega$. On a :
 \begin{itemize}
-\item [$\bullet$] $Adb(\omega)=20 \log {\omega}=20\log \omega$;
+\item [$\bullet$] $AdB(\omega)=20 \log {\omega}=20\log \omega$;
 \item [$\bullet$] $\varphi(\omega)= \arctan \dfrac{\dfrac{1}{\omega}}{0}$ tend vers $\dfrac{\pi}{2}$.
 \end{itemize}
 
@@ -401,6 +401,7 @@ Ici $H(j\omega)= j\omega$. On a :
 
 \section{Réponse harmonique d'un système du premier ordre}
 
+\subsection{Tracé réel}
 \begin{minipage}[c]{.48\linewidth}
 \begin{center}
 \includegraphics[width=.9\textwidth]{png/ordre1_bloc}
@@ -408,7 +409,7 @@ Ici $H(j\omega)= j\omega$. On a :
 
 On a $H(j\omega)=\dfrac{K}{1+j\omega p}$. Calculons le gain de la fonction de transfert :
 $$
-Adb(\omega) 
+AdB(\omega) 
 = 20\log \left(\dfrac{ \sqrt{ K^2} }{\sqrt{1+\tau^2\omega^2}}\right)
 = 20\log K - 10 \log \left( 1+\tau^2\omega^2\right)
 $$
@@ -426,6 +427,42 @@ $$
 \textit{Diagramme de Bode -- $H(p)=\dfrac{20}{1+p}$}
 \end{center}
 \end{minipage}
+
+\subsection{Tracé asymptotique}
+\paragraph*{En 0}
+Pour le gain, on a $\underset{\omega \to 0 }{\lim} AdB(\omega) = 20 \log K$. Lorsque $\omega$ tend vers 0, $AdB(\omega)$ tend vers une constante, ce qui donne une droite horizontale.
+
+Pour la phase, on a $\underset{\omega \to 0 }{\lim} \varphi(\omega) = 0$. Lorsque $\omega$ tend vers 0, $\varphi(\omega)$ tend vers une constante, ce qui donne une droite horizontale.
+
+\paragraph*{En $+\infty$}
+Pour le gain, on a $+\infty $ : $AdB(\omega) = 20 \log K -20\log \tau-20\log \omega = 20 \log \dfrac{K}{\tau} -20\log \omega$. Cela correspond, dans un diagramme semi logarithmique à une droite passant par $20 \log \dfrac{K}{\tau}$ en $\omega=1$ et une pente de -20 $dB$ par décade. 
+
+Pour la phase, on a $\underset{\omega \to +\infty }{\lim} \varphi(\omega) = -\dfrac{\pi}{2}$. Lorsque $\omega$ tend vers 0, $\varphi(\omega)$ tend vers une constante, ce qui donne une droite horizontale.
+
+\paragraph*{Remarques}
+L'intersection des deux asymptotes se détermine en cherchant $\omega$ tel que  $ 20 \log K = 20 \log \dfrac{K}{\tau} -20\log \omega \Longleftrightarrow 
+20 \log T = -20\log \omega \Longleftrightarrow  \omega = \dfrac{1}{\tau}$.
+
+\begin{resultat}
+Les asymptotes s'intersectent en $\omega = \dfrac{1}{\tau}$.
+\end{resultat}
+
+Calculons la valeur du gain au passage de $\omega = \dfrac{1}{\tau}$ :
+$$
+AdB\left(\dfrac{1}{\tau}\right) 
+= 20\log K - 20 \log \sqrt{ 1+1} \simeq 20\log K - 3 
+$$
+
+On a donc une atténuation de $-3\,dB$ en $\omega = \dfrac{1}{\tau}$.
+
+Par ailleurs, 
+$$
+\left|H\left(j\dfrac{1}{\tau}\right)\right| = \left|\dfrac{K}{1+j}\right| = \dfrac{K}{\sqrt{2}} = K\dfrac{\sqrt{2}}{2}
+$$
+
+\begin{warn}
+Une atténuation de $-3\; dB$ n'est pas anodine. Elle correspond à une atténuation du signal de près de 30\% en régime permanent.
+\end{warn}
 
 \section{Réponse harmonique d'un système du second ordre}
 
@@ -509,7 +546,7 @@ $H(p)=\dfrac{20}{\left(1+ p \right)^2}$.
 %\end{minipage}
 
 
-%\section{Réponse harmonique d'un système asservi}
+% \section{Réponse harmonique d'un système asservi}
 
 %\begin{thebibliography}{2}
    %\bibitem[1]{cite1} DMU 60 eVo linear, \textit{DMG -- Deckel Maho -- Gildemeiseter}, \url{http://fr.dmg.com}.
