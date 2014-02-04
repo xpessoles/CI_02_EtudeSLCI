@@ -60,10 +60,28 @@ Ch 7 : Réponses harmoniques -- \ifthenelse{\boolean{prof}}{P}{E}%
 
 \vspace{.5cm}
 
+
+
+\begin{center}
+\begin{tabular}{ccccc}
+\includegraphics[height=2.5cm]{png/amort1} &&
+\includegraphics[height=3.5cm]{png/schema} && 
+\includegraphics[height=3.5cm]{png/CourbesIntro}\\
+\textit{Amortisseur d'un véhicule automobile} &&
+\textit{Schématisation du mécanisme} &&
+\textit{Réponses harmoniques}\\
+%\textit{Schéma bloc } \\
+\end{tabular}
+\end{center}
+
+
 \begin{savoir}
 \textbf{Savoirs :}
 \begin{itemize}
-\item Mod.
+\item Rés.-C5 : Performances d'un système asservi
+\begin{itemize}
+\item Rés-C5-S2 : Tracer une réponse temporelle ou fréquentielle
+\end{itemize}
 \end{itemize}
 \end{savoir}
 
@@ -464,6 +482,18 @@ $$
 Une atténuation de $-3\; dB$ n'est pas anodine. Elle correspond à une atténuation du signal de près de 30\% en régime permanent.
 \end{warn}
 
+
+Il est possible de calculer la pulsation pour laquelle l'asymptote oblique coupe l'axe des abscisses. Pour cela, il faut résoudre l'équation
+$ 20 \log \dfrac{K}{\tau} -20\log \omega = 0$.
+On a alors 
+$$ 20\log \omega =  20 \log \dfrac{K}{\tau} \Longleftrightarrow \omega =  { \dfrac{K}{\tau}} $$
+
+\begin{center}
+\includegraphics[width=.7\textwidth]{png/ordre1_bode.pdf}
+
+\textit{Représentation asymptotique et tracé réel}
+\end{center}
+
 \section{Réponse harmonique d'un système du second ordre}
 
 \begin{minipage}[c]{.48\linewidth}
@@ -479,16 +509,25 @@ Une atténuation de $-3\; dB$ n'est pas anodine. Elle correspond à une atténua
 \end{center}
 \end{minipage}
 
-\subsection{Cas où $\xi>1$}
+\subsection{Cas où $\xi\geq1$}
 %\begin{minipage}[c]{.48\linewidth}
 Dans ce cas, le dénominateur de la fonction de transfert peut se factoriser sous la forme :
 $H(p)=\dfrac{K}{\left(1+\tau_1 p \right)\left(1+\tau_2 p \right)}$.
+
+Le tracé de cette fonction de transfert revient à tracer les diagrammes de Bode des fonctions de transfert suivantes :
+\begin{itemize}
+\item $H_1(p)=K$;
+\item $H_2(p)=\dfrac{1}{1+\tau_1 p }$;
+\item $H_3(p)=\dfrac{1}{1+\tau_2 p }$.
+\end{itemize}
+
+On peut alors sommer les 3 fonctions de transfert. 
 
 Tracer le diagramme de Bode asymptotique de la fonction de transfert 
 $H(p)=\dfrac{20}{\left(1+ p \right)\left(1+10 p \right)}$.
 
 \begin{center}
-\includegraphics[width=.9\textwidth]{png/bode_vierge}
+\includegraphics[width=.8\textwidth]{png/bode_vierge.pdf}
 
 \textit{Diagramme de Bode -- $H(p)=\dfrac{20}{\left(1+ p \right)\left(1+10 p \right)}$}
 \end{center}
@@ -503,39 +542,67 @@ $H(p)=\dfrac{20}{\left(1+ p \right)\left(1+10 p \right)}$.
 %\end{minipage}
 
 
-\subsection{Cas où $\xi=1$}
-%\begin{minipage}[c]{.48\linewidth}
-Dans ce cas, le dénominateur de la fonction de transfert peut se factoriser sous la forme :
-$H(p)=\dfrac{K}{\left(1+\tau p \right)^2}$.
-
-Tracer le diagramme de Bode asymptotique de la fonction de transfert 
-$H(p)=\dfrac{20}{\left(1+ p \right)^2}$.
-
-\begin{center}
-\includegraphics[width=.9\textwidth]{png/bode_vierge}
-
-\textit{Diagramme de Bode -- $H(p)=\dfrac{20}{\left(1+ p \right)^2}$}
-\end{center}
-
-%\end{minipage}\hfill
-%\begin{minipage}[c]{.48\linewidth}
+%\subsection{Cas où $\xi=1$}
+%%\begin{minipage}[c]{.48\linewidth}
+%Dans ce cas, le dénominateur de la fonction de transfert peut se factoriser sous la forme :
+%$H(p)=\dfrac{K}{\left(1+\tau p \right)^2}$.
+%
+%Tracer le diagramme de Bode asymptotique de la fonction de transfert 
+%$H(p)=\dfrac{20}{\left(1+ p \right)^2}$.
+%
 %\begin{center}
-%\includegraphics[width=.9\textwidth]{png/ordre2_bode}
-
-%\textit{Diagramme de Bode -- $H(p)=$}
+%\includegraphics[width=.9\textwidth]{png/bode_vierge}
+%
+%\textit{Diagramme de Bode -- $H(p)=\dfrac{20}{\left(1+ p \right)^2}$}
 %\end{center}
-%\end{minipage}
+%
+%%\end{minipage}\hfill
+%%\begin{minipage}[c]{.48\linewidth}
+%%\begin{center}
+%%\includegraphics[width=.9\textwidth]{png/ordre2_bode}
+%
+%%\textit{Diagramme de Bode -- $H(p)=$}
+%%\end{center}
+%%\end{minipage}
 
 \subsection{Cas où $\xi<1$}
+Les pôles de la fonction de transfert sont complexes conjugués.
+
+Le gain est donné par la fonction suivante : 
+$$
+AdB(\omega)=20\log K - 20 \log \sqrt{\left(1-\dfrac{\omega^2}{\omega_0^2}\right)^2+4\xi^2\dfrac{\omega^2}{\omega_0^2}}
+$$
+
+L'argument est donné par 
+$$
+\varphi(\omega)=-\arctan \left(\dfrac{2\xi\dfrac{\omega}{\omega_0}}{1-\dfrac{\omega^2}{\omega_0^2}} \right)
+$$
 %\begin{minipage}[c]{.48\linewidth}
 
 
 \begin{center}
-\includegraphics[width=.9\textwidth]{png/bode_vierge}
+\includegraphics[width=.9\textwidth]{png/ordre2_bode.pdf}
 
-\textit{Diagramme de Bode -- $H(p)=$}
+\textit{Diagramme de Bode -- $H(p)=\dfrac{20}{1+ \dfrac{2\xi}{1}p+\dfrac{p^2}{1^2}}$}
 \end{center}
 
+\begin{resultat}
+\textbf{Phénomène de résonance}
+
+Le phénomène de résonance s'observe lorsque $\xi<\dfrac{\sqrt{2}}{2}$.
+
+La pulsation de résonance est inférieure à la pulsation propre du système :
+$$
+\omega_r = \omega_0\sqrt{1-2\xi^2}
+$$
+
+\`A la résonance, l'amplitude maximale est de 
+$$
+A_{max} = \dfrac{K}{2\xi\sqrt{1-\xi^2}}
+$$
+
+(Attention, sur le diagramme de Bode, on lit $20\log A_{max}$ lorsque $\omega=\omega_r$.
+\end{resultat}
 %\end{minipage}\hfill
 %\begin{minipage}[c]{.48\linewidth}
 %\begin{center}
@@ -548,12 +615,13 @@ $H(p)=\dfrac{20}{\left(1+ p \right)^2}$.
 
 % \section{Réponse harmonique d'un système asservi}
 
-%\begin{thebibliography}{2}
+\begin{thebibliography}{2}
    %\bibitem[1]{cite1} DMU 60 eVo linear, \textit{DMG -- Deckel Maho -- Gildemeiseter}, \url{http://fr.dmg.com}.
    %\bibitem[2]{cite2} Programmation des machines-outils à commande numérique (MOCN), \textit{Étienne Lefur et Christophe Sohier}, École Normale Supérieure de Cachan, \url{http://etienne.lefur.free.fr/}.
-   %\bibitem[3]{cite3} SLCI : Systèmes asservis en boucle fermée : stabilité et précision, \textit{Joël Boiron}, PTSI -- Lycée Gustave Eiffel de Bordeaux.
+\bibitem[1]{cite1} \textit{Jean-Pierre Pupier}, SLCI : Réponse harmonique des systèmes du premier et du second ordre. PTSI -- Lycée Rouvière de Toulon.
+   \bibitem[2]{cite2} \textit{Joël Boiron}, SLCI : Étude générale des systèmes fondamentaux du premier et du deuxième ordre. PTSI -- Lycée Gustave Eiffel de Bordeaux.
 
-%\end{thebibliography}
+\end{thebibliography}
 
 \end{document}
  
